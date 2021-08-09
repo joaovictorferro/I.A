@@ -165,61 +165,6 @@ c6.grid(row = 7, column = 0)
 c6 = tk.Checkbutton(raiz, text = "128 GB", variable = escolhaCapacidade, onvalue=128 ,offvalue=0,width=20, height=5, bg=background)
 c6.grid(row = 7, column = 1)
 
-# #Titulo opcionais do carro
-# tk.Label(raiz, text="Opcionais do carro", width=60, bg=background, font=fontTipo).grid(row = 7, column = 1, pady = 5)
-
-# #caixa de selecao do Ar condicionado
-# # img9 = ImageTk.PhotoImage(file = "./fotos/ar_condicionado.jpg")
-# c9 = tk.Checkbutton(raiz, text = "Ar condicionado", variable = escolhaAr_condicionado,  width=100, height=100, compound='top', bg=background)
-# c9.grid(row = 8, column = 2, pady = 5)
-
-# #caixa de selecao do Farol de milha
-# # img10 = ImageTk.PhotoImage(file = "./fotos/farol_de_milha.jpg")
-# c10 = tk.Checkbutton(raiz, text = "Farol de milha", variable = escolhaFarol_de_milha,  width=100, height=110, compound='top', bg=background)
-# c10.grid(row = 8, column = 0, pady = 5)
-
-# #caixa de selecao do Camera de re
-# # img11 = ImageTk.PhotoImage(file = "./fotos/camera-re.jpg")
-# c11 = tk.Checkbutton(raiz, text = "Camera de re", variable = escolhaCamera_de_re,  width=100, height=100, compound='top', bg=background)
-# c11.grid(row = 8, column = 1, pady = 5)
-
-# #caixa de selecao do Direcao eletrica
-# # img12 = ImageTk.PhotoImage(file = "./fotos/direcao_eletrica.jpg")
-# c12 = tk.Checkbutton(raiz, text = "Direcao eletrica", variable = escolhaDirecao_eletrica,  width=100, height=100, compound='top', bg=background)
-# c12.grid(row = 9, column = 2, pady = 5)
-
-# #caixa de selecao do Vidros eletricos
-# # img13 = ImageTk.PhotoImage(file = "./fotos/vidro_eletrico.jpg")
-# c13 = tk.Checkbutton(raiz, text = "Vidros eletricos", variable = escolhaVidros_eletricos,  width=100, height=100, compound='top', bg=background)
-# c13.grid(row = 9, column = 0, pady = 5)
-
-# #caixa de selecao do Piloto automatico
-# # img14 = ImageTk.PhotoImage(file = "./fotos/piloto_automatico.jpg")
-# c14 = tk.Checkbutton(raiz, text = "Piloto automatico", variable = escolhaPiloto_automatico,  width=100, height=100, compound='top', bg=background)
-# c14.grid(row = 9, column = 1, pady = 5)
-# """
-
-# #caixa Confirmar
-# b1 = tk.Button(raiz, text="Confirmar", command = detectarRecomendacao, bg=background)
-# b1.grid(row = 10, column = 0, padx = 10, pady=10)
-
-# #caixa Limpar areas selecionadas
-# b2 = tk.Button(raiz, text="Limpar areas selecionadas", command = limpar, bg=background)
-# b2.grid(row = 10, column = 2, padx = 5, pady=10 )
-
-# ####    layout tela final: modelo do carro, disponibilidade de cores e preço final    ####
-
-# #resposta de qual carro foi recomendado
-# l2 = tk.Label(raiz, text = "Esse é seu celular:", bg=background)
-# l2.grid(row = 11, column = 0, pady = 2)
-# celularRecomendado = tk.Text(raiz, state = tk.DISABLED, height = 1, width=40)
-# celularRecomendado.grid(row = 11, column = 1, pady = 2)
-
-# #resposta do preço do carro
-# l4 = tk.Label(raiz, text="Preço do celuar:", bg=background)
-# l4.grid(row = 13, column = 0, pady = 2)
-# precoCelular = tk.Text(raiz, state = tk.DISABLED, height = 1, width=40)
-# precoCelular.grid(row = 13, column = 1, pady = 2)
 
 #loop da main para funcionamento do aplicativo
 raiz.mainloop()
