@@ -131,39 +131,78 @@ c6.grid(row = 7, column = 1)
 tk.Label(raiz, text="Marca do Celular", width=60, bg=background, font=fontTipo).grid(row = 8, column = 1, pady = 5)
 
 #caixa de selecao da Apple
-c6 = tk.Checkbutton(raiz, text = "Apple", variable = escolhaCapacidade, onvalue=1 ,offvalue=0,width=20, height=5, bg=background)
+c6 = tk.Checkbutton(raiz, text = "Apple", variable = escolhaMarca, onvalue=1 ,offvalue=0,width=20, height=5, bg=background)
 c6.grid(row = 9, column = 0)
 
 #caixa de selecao da LG
-c6 = tk.Checkbutton(raiz, text = "LG", variable = escolhaCapacidade, onvalue=2,offvalue=0,width=20, height=5, bg=background)
+c6 = tk.Checkbutton(raiz, text = "LG", variable = escolhaMarca, onvalue=2,offvalue=0,width=20, height=5, bg=background)
 c6.grid(row = 9, column = 1)
 
-#caixa de selecao da LG
-c6 = tk.Checkbutton(raiz, text = "ASUS", variable = escolhaCapacidade, onvalue=3,offvalue=0,width=20, height=5, bg=background)
+#caixa de selecao da ASUS
+c6 = tk.Checkbutton(raiz, text = "ASUS", variable = escolhaMarca, onvalue=3,offvalue=0,width=20, height=5, bg=background)
 c6.grid(row = 9, column = 2)
 
-#caixa de selecao da LG
-c6 = tk.Checkbutton(raiz, text = "Motorola", variable = escolhaCapacidade, onvalue=4,offvalue=0,width=20, height=5, bg=background)
+#caixa de selecao da MOTOROLA
+c6 = tk.Checkbutton(raiz, text = "Motorola", variable = escolhaMarca, onvalue=4,offvalue=0,width=20, height=5, bg=background)
 c6.grid(row = 10, column = 0)
 
-#caixa de selecao da LG
-c6 = tk.Checkbutton(raiz, text = "Samsung", variable = escolhaCapacidade, onvalue=5,offvalue=0,width=20, height=5, bg=background)
+#caixa de selecao da SAMSUNG
+c6 = tk.Checkbutton(raiz, text = "Samsung", variable = escolhaMarca, onvalue=5,offvalue=0,width=20, height=5, bg=background)
 c6.grid(row = 10, column = 1)
 
-#caixa de selecao da LG
-c6 = tk.Checkbutton(raiz, text = "Xiomi", variable = escolhaCapacidade, onvalue=6,offvalue=0,width=20, height=5, bg=background)
+#caixa de selecao da XIOMI
+c6 = tk.Checkbutton(raiz, text = "Xiomi", variable = escolhaMarca, onvalue=6,offvalue=0,width=20, height=5, bg=background)
 c6.grid(row = 10, column = 2)
 
-#Titulo Capacidade do celular
-tk.Label(raiz, text="Capacidade do Celular", width=60, bg=background, font=fontTipo).grid(row = 6, column = 1, pady = 5)
+#Titulo Cam Frontal ou Principal
+tk.Label(raiz, text="Cam Frontal ou Principal", width=60, bg=background, font=fontTipo).grid(row = 11, column = 1, pady = 5)
 
 #caixa de selecao do tipo 64B de Ram
-c6 = tk.Checkbutton(raiz, text = "64 GB", variable = escolhaCapacidade, onvalue=64 ,offvalue=0,width=20, height=5, bg=background)
-c6.grid(row = 7, column = 0)
+c6 = tk.Checkbutton(raiz, text = "CAM Frontal", variable = escolhaCamFrontal, onvalue=1 ,offvalue=0,width=20, height=5, bg=background)
+c6.grid(row = 12, column = 0)
 
 #caixa de selecao do tipo 12GB de Ram
-c6 = tk.Checkbutton(raiz, text = "128 GB", variable = escolhaCapacidade, onvalue=128 ,offvalue=0,width=20, height=5, bg=background)
-c6.grid(row = 7, column = 1)
+c6 = tk.Checkbutton(raiz, text = "CAM Principal", variable = escolhaCamPrincipal, onvalue=2 ,offvalue=0,width=20, height=5, bg=background)
+c6.grid(row =12, column = 1)
+
+#Titulo MULTICHIP
+tk.Label(raiz, text="Multichip", width=60, bg=background, font=fontTipo).grid(row = 13, column = 1, pady = 5)
+
+#caixa de selecao do tipo 64B de Ram
+c6 = tk.Checkbutton(raiz, text = "1 Chip", variable = escolhaTipoMultichip, onvalue=1 ,offvalue=0,width=20, height=5, bg=background)
+c6.grid(row = 14, column = 0)
+
+#caixa de selecao do tipo 12GB de Ram
+c6 = tk.Checkbutton(raiz, text = "2 Chip", variable = escolhaTipoMultichip, onvalue=2 ,offvalue=0,width=20, height=5, bg=background)
+c6.grid(row =14, column = 1)
+
+#caixa Confirmar
+b1 = tk.Button(raiz, text="Confirmar", command = detectarRecomendacao, bg=background)
+b1.grid(row = 15, column = 0, padx = 10, pady=10)
+
+#caixa Limpar areas selecionadas
+b2 = tk.Button(raiz, text="Limpar areas selecionadas", command = limpar, bg=background)
+b2.grid(row = 15, column = 2, padx = 5, pady=10 )
+
+# ####    layout tela final: modelo do celular, preço final    ####
+
+#resposta de qual celular foi recomendado
+l2 = tk.Label(raiz, text = "Esse é seu carro:", bg=background)
+l2.grid(row = 15, column = 1, pady = 2)
+carroRecomendado = tk.Text(raiz, state = tk.DISABLED, height = 1, width=40)
+carroRecomendado.grid(row = 15, column = 3, pady = 2)
+
+# #resposta de qual cor tem disponibilizada
+# l3 = tk.Label(raiz, text="Cores disponiveis:", bg=background)
+# l3.grid(row = 12, column = 0, pady = 2)
+# coresDisponiveis = tk.Text(raiz, state = tk.DISABLED, height = 1, width=40)
+# coresDisponiveis.grid(row = 12, column = 1, pady = 2)
+
+# #resposta do preço do carro
+# l4 = tk.Label(raiz, text="Preço do carro:", bg=background)
+# l4.grid(row = 13, column = 0, pady = 2)
+# precoCarro = tk.Text(raiz, state = tk.DISABLED, height = 1, width=40)
+# precoCarro.grid(row = 13, column = 1, pady = 2)
 
 
 #loop da main para funcionamento do aplicativo
