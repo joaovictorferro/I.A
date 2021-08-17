@@ -19,10 +19,6 @@ def detectarRecomendacao():
 
     sistemaEspecialista.run()
 
-    print(sistemaEspecialista.celular)
-    print(sistemaEspecialista.precodoCelular)
-    print(sistemaEspecialista.imagem)
-
     return sistemaEspecialista.celular, sistemaEspecialista.precodoCelular, sistemaEspecialista.imagem
 
 
