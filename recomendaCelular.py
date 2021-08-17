@@ -1,5 +1,5 @@
 import tkinter as tk
-from PIL import ImageTk
+from PIL import ImageTk, Image
 import regrasRecomendacao as rules
 from experta import Fact
 import tkinter.font as tkFont
@@ -18,29 +18,50 @@ def detectarRecomendacao():
     sistemaEspecialista.declare(Fact(marca = str(escolhaMarca.get())))
 
     sistemaEspecialista.run()
+
+    print(sistemaEspecialista.celular)
+    print(sistemaEspecialista.precodoCelular)
+    print(sistemaEspecialista.imagem)
+
+    return sistemaEspecialista.celular, sistemaEspecialista.precodoCelular, sistemaEspecialista.imagem
+
+
+def openNewWindow():
+    # Toplevel object which will
+    # be treated as a new window
+    newWindow = tk.Toplevel()
+
+    # sets the title of the
+    # Toplevel widget
+    newWindow.title("Recomendacao")
+
+    # sets the geometry of toplevel
+    newWindow.geometry("400x400")
+
+    # A Label widget to show in toplevel
+    tk.Label(newWindow, text ="Este e seu celular").pack()
+
+    celularRecomendado, precoCelular, caminhoImagem = detectarRecomendacao() 
+
+    if celularRecomendado == precoCelular == caminhoImagem == '':
+        celularRecomendado = 'Infelizmente não temos um celular que se enquadre nos seus desejos.'
+        caminhoImagem = r'.\Fotos\question.jpg'
+
+    img = ImageTk.PhotoImage(Image.open(caminhoImagem).resize((200, 200)))
+
+    canvas = tk.Canvas (newWindow, width = 300, height = 300)
+    canvas.pack()
+    canvas.create_image(120, 120, anchor = tk.CENTER, image=img)
+    canvas.img = img
     
-    celularRecomendado.config(state = tk.NORMAL)
-    precoCelular.config(state = tk.NORMAL)
-    
-    celularRecomendado.delete("1.0", "end")
-    celularRecomendado.insert(tk.INSERT, sistemaEspecialista.carro)
-    precoCelular.delete("1.0", "end")
-    precoCelular.insert(tk.INSERT, sistemaEspecialista.precodoCarro)
-    
-    celularRecomendado.config(state = tk.DISABLED)
-    precoCelular.config(state = tk.DISABLED)
+    # A Label celular Recomendado
+    tk.Label(newWindow, text =str(celularRecomendado)).pack()
+
+    # A Label Preco do celular
+    tk.Label(newWindow, text =str(precoCelular)).pack()
 
 #Limpando os campos utilizados
 def limpar():
-    celularRecomendado.config(state = tk.NORMAL)
-    precoCelular.config(state = tk.NORMAL)
-    
-    celularRecomendado.delete("1.0", "end")
-    precoCelular.delete("1.0", "end")
-    
-    celularRecomendado.config(state = tk.DISABLED)
-    precoCelular.config(state = tk.DISABLED)
-    
     escolhaTipoRam.set(None)
     escolhaPreco.set(None)
     escolhaTipoMultichip.set(None)
@@ -70,11 +91,11 @@ escolhaMarca = tk.IntVar()
 #interface do programa (iniciando com o titulo)
 fontStyle = tkFont.Font(family="Helvetica", size=20, weight="bold")
 l1 = tk.Label(raiz, text="Marque as opções que você deseja", width=30, bg=background,  font=fontStyle)
-l1.grid(row = 0, column = 1, pady = 5, padx=5 )
+l1.grid(row = 0, column = 1, pady = 0, padx=5 )
 
 #Titulo Faixa de Preço
 fontTipo = tkFont.Font(family="Helvetica", size=15)
-tk.Label(raiz, text="Faixa de Preço", width=60, bg=background, font=fontTipo).grid(row = 1, column = 1, pady = 5)
+tk.Label(raiz, text="Faixa de Preço", width=60, bg=background, font=fontTipo).grid(row = 1, column = 1, pady = 0)
 
 #caixa de selecao menos que R$2000
 c1 = tk.Checkbutton(raiz, text = "Menos que R$ 2000,00", variable= escolhaPreco, onvalue=2 ,offvalue=0,width=50, height=5, bg= background)
@@ -117,7 +138,7 @@ c6 = tk.Checkbutton(raiz, text = "12 GB", variable = escolhaTipoRam, onvalue=12 
 c6.grid(row = 5, column = 2)
 
 #Titulo Capacidade do celular
-tk.Label(raiz, text="Capacidade do Celular", width=60, bg=background, font=fontTipo).grid(row = 6, column = 1, pady = 5)
+tk.Label(raiz, text="Capacidade do Celular", width=60, bg=background, font=fontTipo).grid(row = 6, column = 1, pady = 0)
 
 #caixa de selecao do tipo 64B de Ram
 c6 = tk.Checkbutton(raiz, text = "64 GB", variable = escolhaCapacidade, onvalue=64 ,offvalue=0,width=20, height=5, bg=background)
@@ -128,7 +149,7 @@ c6 = tk.Checkbutton(raiz, text = "128 GB", variable = escolhaCapacidade, onvalue
 c6.grid(row = 7, column = 1)
 
 #Titulo Marca do Celular
-tk.Label(raiz, text="Marca do Celular", width=60, bg=background, font=fontTipo).grid(row = 8, column = 1, pady = 5)
+tk.Label(raiz, text="Marca do Celular", width=60, bg=background, font=fontTipo).grid(row = 8, column = 1, pady = 0)
 
 #caixa de selecao da Apple
 c6 = tk.Checkbutton(raiz, text = "Apple", variable = escolhaMarca, onvalue=1 ,offvalue=0,width=20, height=5, bg=background)
@@ -155,7 +176,7 @@ c6 = tk.Checkbutton(raiz, text = "Xiomi", variable = escolhaMarca, onvalue=6,off
 c6.grid(row = 10, column = 2)
 
 #Titulo Cam Frontal ou Principal
-tk.Label(raiz, text="Cam Frontal ou Principal", width=60, bg=background, font=fontTipo).grid(row = 11, column = 1, pady = 5)
+tk.Label(raiz, text="Cam Frontal ou Principal", width=60, bg=background, font=fontTipo).grid(row = 11, column = 1, pady = 0)
 
 #caixa de selecao do tipo 64B de Ram
 c6 = tk.Checkbutton(raiz, text = "CAM Frontal", variable = escolhaCamFrontal, onvalue=1 ,offvalue=0,width=20, height=5, bg=background)
@@ -166,7 +187,7 @@ c6 = tk.Checkbutton(raiz, text = "CAM Principal", variable = escolhaCamPrincipal
 c6.grid(row =12, column = 1)
 
 #Titulo MULTICHIP
-tk.Label(raiz, text="Multichip", width=60, bg=background, font=fontTipo).grid(row = 13, column = 1, pady = 5)
+tk.Label(raiz, text="Multichip", width=60, bg=background, font=fontTipo).grid(row = 13, column = 1, pady = 0)
 
 #caixa de selecao do tipo 64B de Ram
 c6 = tk.Checkbutton(raiz, text = "1 Chip", variable = escolhaTipoMultichip, onvalue=1 ,offvalue=0,width=20, height=5, bg=background)
@@ -177,32 +198,12 @@ c6 = tk.Checkbutton(raiz, text = "2 Chip", variable = escolhaTipoMultichip, onva
 c6.grid(row =14, column = 1)
 
 #caixa Confirmar
-b1 = tk.Button(raiz, text="Confirmar", command = detectarRecomendacao, bg=background)
-b1.grid(row = 15, column = 0, padx = 10, pady=10)
+b1 = tk.Button(raiz, text="Confirmar", command = openNewWindow, bg=background)
+b1.grid(row = 15, column = 0, padx = 10, pady=0)
 
 #caixa Limpar areas selecionadas
 b2 = tk.Button(raiz, text="Limpar areas selecionadas", command = limpar, bg=background)
-b2.grid(row = 15, column = 2, padx = 5, pady=10 )
-
-# ####    layout tela final: modelo do celular, preço final    ####
-
-#resposta de qual celular foi recomendado
-l2 = tk.Label(raiz, text = "Esse é seu carro:", bg=background)
-l2.grid(row = 15, column = 1, pady = 2)
-carroRecomendado = tk.Text(raiz, state = tk.DISABLED, height = 1, width=40)
-carroRecomendado.grid(row = 15, column = 3, pady = 2)
-
-# #resposta de qual cor tem disponibilizada
-# l3 = tk.Label(raiz, text="Cores disponiveis:", bg=background)
-# l3.grid(row = 12, column = 0, pady = 2)
-# coresDisponiveis = tk.Text(raiz, state = tk.DISABLED, height = 1, width=40)
-# coresDisponiveis.grid(row = 12, column = 1, pady = 2)
-
-# #resposta do preço do carro
-# l4 = tk.Label(raiz, text="Preço do carro:", bg=background)
-# l4.grid(row = 13, column = 0, pady = 2)
-# precoCarro = tk.Text(raiz, state = tk.DISABLED, height = 1, width=40)
-# precoCarro.grid(row = 13, column = 1, pady = 2)
+b2.grid(row = 15, column = 2, padx = 5, pady=0 )
 
 
 #loop da main para funcionamento do aplicativo
