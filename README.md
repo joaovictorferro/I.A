@@ -29,3 +29,6 @@ Sistema de Inteligência Artificial utilizando máquina de inferência para indi
 | XIAOMI   | Mi 9T               | 6 GB  | 20 Mp                | 48 Mp + 8 Mp + 13 Mp       | 128 GB             | 2         | 4000 mAh | 1080 x 2340 pixels | 6.39            | R$ 1.340,00 |
 | XIAOMI   | Poco F3             | 6 GB  | 20 Mp                | 48 Mp + 8 Mp + 5 Mp        | 128 GB             | 2         | 4520 mAh | 1080 x 2400 pixels | 6.67            | R$ 2.679,00 |
 | XIAOMI   | Mi 11               | 8 GB  | 20 Mp                | 108 Mp + 13 Mp + 5 Mp      | 256 GB             | 2         | 4600 mAh | 1440 x 3200 pixels | 6.81            | R$ 7.189,00 |
+
+## Árvore de Decisão 
+![Árvore de decisão.png](https://github.com/joaovictorferro/I.A/blob/main/%C3%81rvore%20de%20decis%C3%A3o.png)
