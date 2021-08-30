@@ -56,17 +56,6 @@ def openNewWindow():
     # A Label Preco do celular
     tk.Label(newWindow, text =str(precoCelular)).pack()
 
-#Limpando os campos utilizados
-def limpar():
-    escolhaTipoRam.set(None)
-    escolhaPreco.set(None)
-    escolhaTipoMultichip.set(None)
-    escolhaCapacidade.set(None)
-    escolhaCamFrontal.set(None)
-    escolhaCamPrincipal.set(None)
-    escolhaMarca.set(None)
-
-
 background = "#99f6ff"
 raiz = tk.Tk()
 raiz.title("Escolha de Celular")
@@ -136,13 +125,17 @@ c6.grid(row = 5, column = 2)
 #Titulo Capacidade do celular
 tk.Label(raiz, text="Capacidade do Celular", width=60, bg=background, font=fontTipo).grid(row = 6, column = 1, pady = 0)
 
-#caixa de selecao do tipo 64B de Ram
-c6 = tk.Checkbutton(raiz, text = "64 GB", variable = escolhaCapacidade, onvalue=64 ,offvalue=0,width=20, height=5, bg=background)
+#caixa de selecao do tipo 32GB de Ram Secundaria
+c6 = tk.Checkbutton(raiz, text = "32 GB", variable = escolhaCapacidade, onvalue=32 ,offvalue=0,width=20, height=5, bg=background)
 c6.grid(row = 7, column = 0)
 
-#caixa de selecao do tipo 12GB de Ram
-c6 = tk.Checkbutton(raiz, text = "128 GB", variable = escolhaCapacidade, onvalue=128 ,offvalue=0,width=20, height=5, bg=background)
+#caixa de selecao do tipo 64GB de Ram Secundaria
+c6 = tk.Checkbutton(raiz, text = "64 GB", variable = escolhaCapacidade, onvalue=64 ,offvalue=0,width=20, height=5, bg=background)
 c6.grid(row = 7, column = 1)
+
+#caixa de selecao do tipo 128GB de Ram Secundaria
+c6 = tk.Checkbutton(raiz, text = "128 GB", variable = escolhaCapacidade, onvalue=128 ,offvalue=0,width=20, height=5, bg=background)
+c6.grid(row = 7, column = 2)
 
 #Titulo Marca do Celular
 tk.Label(raiz, text="Marca do Celular", width=60, bg=background, font=fontTipo).grid(row = 8, column = 1, pady = 0)
@@ -174,33 +167,28 @@ c6.grid(row = 10, column = 2)
 #Titulo Cam Frontal ou Principal
 tk.Label(raiz, text="Cam Frontal ou Principal", width=60, bg=background, font=fontTipo).grid(row = 11, column = 1, pady = 0)
 
-#caixa de selecao do tipo 64B de Ram
+#caixa de selecao do tipo CAM Frontal
 c6 = tk.Checkbutton(raiz, text = "CAM Frontal", variable = escolhaCamFrontal, onvalue=1 ,offvalue=0,width=20, height=5, bg=background)
 c6.grid(row = 12, column = 0)
 
-#caixa de selecao do tipo 12GB de Ram
+#caixa de selecao do tipo CAM Principal
 c6 = tk.Checkbutton(raiz, text = "CAM Principal", variable = escolhaCamPrincipal, onvalue=2 ,offvalue=0,width=20, height=5, bg=background)
 c6.grid(row =12, column = 1)
 
 #Titulo MULTICHIP
 tk.Label(raiz, text="Multichip", width=60, bg=background, font=fontTipo).grid(row = 13, column = 1, pady = 0)
 
-#caixa de selecao do tipo 64B de Ram
+#caixa de selecao do tipo 1 Chip
 c6 = tk.Checkbutton(raiz, text = "1 Chip", variable = escolhaTipoMultichip, onvalue=1 ,offvalue=0,width=20, height=5, bg=background)
 c6.grid(row = 14, column = 0)
 
-#caixa de selecao do tipo 12GB de Ram
+#caixa de selecao do tipo 2 Chip
 c6 = tk.Checkbutton(raiz, text = "2 Chip", variable = escolhaTipoMultichip, onvalue=2 ,offvalue=0,width=20, height=5, bg=background)
 c6.grid(row =14, column = 1)
 
 #caixa Confirmar
 b1 = tk.Button(raiz, text="Confirmar", command = openNewWindow, bg=background)
-b1.grid(row = 15, column = 0, padx = 10, pady=0)
-
-#caixa Limpar areas selecionadas
-b2 = tk.Button(raiz, text="Limpar areas selecionadas", command = limpar, bg=background)
-b2.grid(row = 15, column = 2, padx = 5, pady=0 )
-
+b1.grid(row = 15, column = 1, padx = 10, pady=0)
 
 #loop da main para funcionamento do aplicativo
 raiz.mainloop()
